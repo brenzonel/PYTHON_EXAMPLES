@@ -5,7 +5,7 @@ import oracledb
 
 connection = oracledb.connect(
     user="system",
-    password="28Extencion..",
+    password="30Extencion..",
     host="localhost", port=1521, service_name="orcl")
 
 print("Successfully connected to Oracle Database")
