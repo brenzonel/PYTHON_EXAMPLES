@@ -9,16 +9,20 @@ import docx
 r = sr.Recognizer()
 
 mydoc = docx.Document()
+mydoc.add_heading("Transcripción de audio", level=0)
+mydoc.add_heading("Texto por fragmentos", level=1)
+mydoc.add_paragraph("")
 
 # convert mp4 to mp3 or wav direct in one function
 def mp4tomp3 (video_path, audio_path):
     video = mp.VideoFileClip(video_path)
     video.audio.write_audiofile(audio_path)
 
+'''
 def mp3towav (audio_path, wav_path):
     sound = AudioSegment.from_mp3(audio_path)
     sound.export(wav_path, format="wav")
-
+'''
 
 def wavToText (audio_path):
     #recognizer = sr.Recognizer()
@@ -75,9 +79,11 @@ def wavToText2(path):
 
     
 #mp4tomp3("video.mp4", "audio.mp3")
-#mp4tomp3("CHUBB/20240513_090608 KT Fase 2 CHUBB Recording.mp4", "CHUBB/20240513_090608_KT_Fase_2_CHUBB_Recording.wav")
-#mp3towav("Test1.mp3", "Test1.wav")
-print(wavToText2("CHUBB/20240513_090608_KT_Fase_2_CHUBB_Recording.wav"))
+#mp4tomp3("Directorio/video.mp4", "Directorio/video_nuevo.wav")
+#mp3towav("Test1.mp3", "Test1.wav") OLD
+print(wavToText2("Directorio/documento.wav"))
 #mydoc.add_paragraph(wavToText2("Test1.wav"))
-mydoc.save("CHUBB/20240513_090608_KT_Fase_2_CHUBB.docx")
+core_properties = mydoc.core_properties
+core_properties.author = core_properties.autor + " BADLA"
+mydoc.save("Directorio/documento.docx")
 #print(wavToText2("Test1.wav"))
