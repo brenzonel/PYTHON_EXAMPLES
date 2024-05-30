@@ -1,0 +1,4 @@
+pip install moviepy
+pip install SpeechRecognition pydub
+pip install pydub
+pip install python-docx

@@ -8,6 +8,7 @@ import docx
 # create a speech recognition object
 r = sr.Recognizer()
 
+# create a word document and add a title
 mydoc = docx.Document()
 mydoc.add_heading("Transcripción de audio", level=0)
 mydoc.add_heading("Texto por fragmentos", level=1)
@@ -23,7 +24,7 @@ def mp3towav (audio_path, wav_path):
     sound = AudioSegment.from_mp3(audio_path)
     sound.export(wav_path, format="wav")
 '''
-
+# convert wav to text
 def wavToText (audio_path):
     #recognizer = sr.Recognizer()
     #audio = sr.AudioFile(audio_path)
@@ -35,6 +36,7 @@ def wavToText (audio_path):
     return r.recognize_google(audio_file, language="es-MX")
     #return text
 
+# split the audio file into chunks, call wavToText for each chunk and add the text to the word document
 def wavToText2(path):
     """Splitting the large audio file into chunks
     and apply speech recognition on each of these chunks"""
@@ -81,9 +83,11 @@ def wavToText2(path):
 #mp4tomp3("video.mp4", "audio.mp3")
 #mp4tomp3("Directorio/video.mp4", "Directorio/video_nuevo.wav")
 #mp3towav("Test1.mp3", "Test1.wav") OLD
-print(wavToText2("Directorio/documento.wav"))
-#mydoc.add_paragraph(wavToText2("Test1.wav"))
+print(wavToText2("Directorio/documento.wav")) # One way to call the function
+#wavToText2("Directorio/documento.wav") # Another way to call the function 
+# set the author of the document
 core_properties = mydoc.core_properties
 core_properties.author = core_properties.autor + " BADLA"
+# save the document
 mydoc.save("Directorio/documento.docx")
 #print(wavToText2("Test1.wav"))
