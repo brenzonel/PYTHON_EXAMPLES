@@ -1,4 +1,5 @@
 import win32api, win32con
+import time
 
 def click(x,y):
     win32api.SetCursorPos((x,y))
@@ -10,3 +11,6 @@ def move(x,y):
 
 #click(200,200)
 move(200,200)
+for i in range(100):
+    move(200+i,200)
+    time.sleep(0.1)
