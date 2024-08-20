@@ -3,7 +3,7 @@ import oracledb
 from dotenv import load_dotenv
 import os
 
-#pw = getpass.getpass("Enter password: ")
+#pw = getpass.getpass("Enter password: ") #Para que no se vea la contraseña
 load_dotenv(override=True)
 usrbd = os.getenv('DBORA_USR')
 pwdbd = os.getenv('DBORA_PWD')
